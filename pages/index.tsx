@@ -36,7 +36,7 @@ export default function Home() {
             />
             <button className="btn btn-primary">Search</button>
           </div>
-          <div className="flex flex-col items-center gap-6 py-8 md:flex-row">
+          <div className="flex flex-col justify-center items-center gap-6 py-8 md:flex-row">
             {React.Children.toArray(
               [0, 0, 0].map((property) => <PropertyCard />),
             )}
