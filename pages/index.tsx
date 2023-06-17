@@ -88,7 +88,7 @@ export default function Home() {
             </p>
           </div>
         </SlidingSection>
-        <SlidingSection image={img1.src}>
+        <SlidingSection image={img2.src}>
           <div className="">
             <h4 className="md:text-4xl text-3xl font-semibold text-black font-heading">
               Invest, trade, and build your wealth with ease.
