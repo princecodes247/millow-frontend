@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rounded_card {
+  @apply rounded-3xl transition-all hover:scale-[1.03];
+}
+
+body {
+    @apply font-primary text-gray-900;
+}
+
+.hero_bg {
+    background: linear-gradient(45deg, #1B9AAA 0%, #000000 100%);
+}
+
+@layer components {
+    .btn {
+        @apply capitalize;
+    }
+    .btn-primary {
+        @apply text-white;
+    }
+}
