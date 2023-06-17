@@ -4,6 +4,7 @@ import Head from "next/head";
 import React from "react";
 import img1 from "@/assets/img1.webp";
 import img2 from "@/assets/img2.webp";
+import heroBG from "@/assets/heroBG.webp";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
 export default function Home() {
@@ -16,8 +17,11 @@ export default function Home() {
       </Head>
       <main>
         <Header />
-        <section className="hero_bg flex h-[70vh] md:h-[97vh] flex-col items-center justify-end p-8 md:p-20">
-          <div>
+        <section className="hero_bg relative min-h-[500px] flex h-[70vh] md:h-[97vh] flex-col items-center justify-end p-8 md:p-20">
+          <div className="grayscale absolute overflow-hidden opacity-50 inset-0 flex justify-end">
+          <img src={heroBG.src} className="h-full scale-[1.3] md:scale-[1] relative aspect[1/2] min-w-[800px] object-contain" alt="" />
+          </div>
+          <div className="relative z-10">
             <h1 className="mb-4 font-heading text-3xl md:text-7xl font-semibold text-[#f8ffe5]">
               Unlock real estate investments with Millow.
             </h1>
