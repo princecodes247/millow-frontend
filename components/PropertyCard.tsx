@@ -2,9 +2,9 @@ import propertyImg from "@/assets/property1.webp";
 
 export default function PropertyCard() {
   return (
-    <div className="shadow-xl card w-96 bg-base-100">
+    <a href="/properties/1" className="shadow-xl max-w-[400px] card bg-base-100">
       <figure>
-        <img src={propertyImg.src} alt="Property" />
+        <img src={propertyImg.src} className="w-full" alt="Property" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
@@ -16,6 +16,6 @@ export default function PropertyCard() {
           <p>0.14 HBAR</p>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
