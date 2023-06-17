@@ -5,7 +5,12 @@ export default function Header() {
       <div className="flex-1 ">o</div>
       <ul className="flex max-w-[300px] flex-[2] items-center justify-end md:justify-between">
         {/* <li className="hidden md:block">Invest</li> */}
-        <li className="hidden md:block">Properties</li>
+        <li className="hidden md:block">
+          <a href="/">Home</a>
+        </li>
+        <li className="hidden md:block">
+          <a href="/properties">Properties</a>
+        </li>
         <li>
           <button className="btn-black btn-outline btn">Connect Wallet</button>
         </li>
