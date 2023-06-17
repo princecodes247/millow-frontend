@@ -20,13 +20,30 @@ export default function Home() {
           <img src={heroBG.src} className="h-full scale-[1.3] md:scale-[1.7] relative aspect[1/2] min-w-[800px] object-contain" alt="" />
           </div>
           <div className="relative z-10">
-          <div className="mx-auto mt-12 flex max-w-[600px] flex-col justify-center gap-2 md:flex-row md:px-6">
+          <div className="mx-auto mt-12 flex max-w-[650px] flex-col justify-center gap-2 md:flex-row md:px-6">
             <input
               type="text"
               placeholder="Search here"
               className="w-full p-3 bg-gray-200 border-none rounded-lg input"
             />
-            <button className="btn-primary btn">Search</button>
+               <select
+              name=""
+              id=""
+              className="select h-full max-w-[200px] rounded-lg bg-gray-200"
+              // value={country}
+              // onChange={(e) => setCountry(e.target.value)}
+            >
+              
+              <option value="All">All</option>
+              {React.Children.toArray(
+                [{
+                  name: "Nigeria"
+                }].map((country) => (
+                    <option value={country.name}>{country.name}</option>
+                  )),
+              )}
+            </select>
+            <button className="btn-primary px-8 btn">Search</button>
           </div>
           </div>
         </section>
@@ -38,11 +55,18 @@ export default function Home() {
             <p>Search Results</p>
           </div>
        
-          <div className="grid grid-cols-3 gap-6 py-8 md:flex-row">
+         <div className="relative">
+         <div className="grid grid-cols-3 gap-6 py-8 md:flex-row">
             {React.Children.toArray(
               [0, 0, 0,0,0,0,0,0,0,0,,0,0,0,0].map((property) => <PropertyCard />),
             )}
           </div>
+            <button className="btn sticky bottom-4 left-[50%] -translate-x-[50%] bottom btn-secondary">
+              Show map
+            </button>
+          <div className="">
+          </div>
+         </div>
           <div className="flex items-center justify-center pt-8">
             {/* <button className="btn-primary btn">See more properties</button> */}
           </div>
