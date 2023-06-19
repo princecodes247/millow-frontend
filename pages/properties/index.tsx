@@ -20,6 +20,7 @@ export default function Home() {
           <img src={heroBG.src} className="h-full scale-[1.3] md:scale-[1.7] relative aspect[1/2] min-w-[800px] object-contain" alt="" />
           </div>
           <div className="relative z-10">
+            <h1 className="text-center text-6xl text-white font-heading">All Properties</h1>
           <div className="mx-auto mt-12 flex max-w-[650px] flex-col justify-center gap-2 md:flex-row md:px-6">
             <input
               type="text"
