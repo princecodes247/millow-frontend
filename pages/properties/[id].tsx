@@ -27,7 +27,9 @@ export default function Home() {
               <button className="">Save</button>
             </div>
           </div>
-          <div className="w-full rounded bg-black p-3 aspect-[5/2]"></div>
+          <div className="w-full  bg-base-200">
+            <img src={img1.src} className="w-full rounded aspect-[5/2] object-cover" alt="" />
+          </div>
           <div className="border-b p-4">
           
             <h3 className="text-2xl font-heading mt-4">$ 14,0000</h3>
