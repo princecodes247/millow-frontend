@@ -19,7 +19,7 @@ export default function Home() {
         <section className="p-8 md:p-20">
           <div className="flex items-center pb-4 justify-between">
             <div>
-            <h1 className="text-4xl font-heading font-semibold ">Lagoon Penthosue</h1>
+            <h1 className="text-2xl md:text-4xl font-heading font-semibold ">Lagoon Penthosue</h1>
             <p>Seller</p>
             </div>
             <div className="py-4 flex gap-4">
