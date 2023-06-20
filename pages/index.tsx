@@ -1,13 +1,30 @@
 import Header from "@/components/Header";
 import SlidingSection from "@/components/SlidingSection";
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import img1 from "@/assets/img1.webp";
 import img2 from "@/assets/img2.webp";
 import heroBG from "@/assets/heroBG.webp";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
-export default function Home() {
+import {sanityClient} from "@/src/client";
+import { useDispatch } from "react-redux/es/exports";
+import { saveFetchedData } from "@/redux_store/actions";
+
+export default function Home({property}: any) {
+
+  console.log(property)
+
+  const dispatch = useDispatch()
+
+  // saving the data fetched from sanity
+  useEffect(() => {
+    dispatch(
+      saveFetchedData(property)
+    )
+  }, [])
+
+
   return (
     <div>
       <Head>
@@ -19,7 +36,7 @@ export default function Home() {
         <Header />
         <section className="hero_bg relative min-h-[500px] flex h-[70vh] md:h-[97vh] flex-col items-center justify-end p-8 md:p-20">
           <div className="grayscale absolute overflow-hidden opacity-50 inset-0 flex justify-end">
-          <img src={heroBG.src} className="h-full scale-[1.3] md:scale-[1] relative aspect[1/2] min-w-[800px] object-contain" alt="" />
+            <img src={heroBG.src} className="h-full scale-[1.3] md:scale-[1] relative aspect[1/2] min-w-[800px] object-contain" alt="" />
           </div>
           <div className="relative z-10">
             <h1 className="mb-4 font-heading text-3xl md:text-7xl font-semibold text-[#f8ffe5]">
@@ -127,4 +144,19 @@ export default function Home() {
       <Footer />
     </div>
   );
+}
+
+
+export async function getServerSideProps() {
+  const propertyQuery = `*[_type == "property"][]{_type, name, description, index, location, category,images[0]{asset{_ref}}}`;
+
+  //`https://zpwvjwqc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22property%22%5D%5B${"tokenId"}%5D`
+
+  const property = await sanityClient.fetch(propertyQuery);
+
+  return {
+    props: {
+      property
+    }
+  };
 }
