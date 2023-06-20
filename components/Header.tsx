@@ -34,7 +34,7 @@ export default function Header() {
 
       await sendHBARForGasFees(accounts[0])
 
-      return accounts;
+      return accounts
     } else {
       alert("Customer already connected!")
     }
