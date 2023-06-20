@@ -1,1 +1,2 @@
-module.exports ={millowAddress: "0x57F4919Da4385E7Af4EB1e7f73332161e8377e18"}
+const millowAddress = "0x57F4919Da4385E7Af4EB1e7f73332161e8377e18"
+export default millowAddress
