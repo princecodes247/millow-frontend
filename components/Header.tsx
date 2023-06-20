@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { switchToHederaNetwork } from "@/utils/switchToHederaNetwork";
 import { saveCustomerAddress } from "@/redux_store/actions";
 import {useDispatch} from "react-redux"
@@ -36,10 +37,10 @@ export default function Header() {
       <ul className="flex max-w-[300px] flex-[2] items-center justify-end md:justify-between">
         {/* <li className="hidden md:block">Invest</li> */}
         <li className="hidden md:block px-2" >
-          <a href="/faucet">Faucet</a>
+          <Link href="/faucet">Faucet</Link>
         </li>
         <li className="hidden md:block md:px-2">
-          <a href="/properties">Properties</a>
+          <Link href="/properties">Properties</Link>
         </li>
         <li>
           <button className="btn-black btn-outline btn" onClick = {connectWallet}>Connect Wallet</button>

@@ -1,8 +1,9 @@
+import Link from "next/link";
 import propertyImg from "@/assets/property1.webp";
 
 export default function WishCard() {
   return (
-    <a href="/properties/1" className="max-w-[400px] bg-base-100">
+    <Link href="/properties/1" className="max-w-[400px] bg-base-100">
       <figure>
         <img src={propertyImg.src} className="rounded w-full" alt="Property" />
       </figure>
@@ -12,6 +13,6 @@ export default function WishCard() {
         </h2>
        
       </div>
-    </a>
+    </Link>
   );
 }

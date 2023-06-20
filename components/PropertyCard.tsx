@@ -1,8 +1,9 @@
+import Link from "next/link";
 import propertyImg from "@/assets/property1.webp";
 
 export default function PropertyCard() {
   return (
-    <a href="/properties/1" className="shadow-xl max-w-[400px] card bg-base-100">
+    <Link href="/properties/1" className="shadow-xl max-w-[400px] card bg-base-100">
       <figure>
         <img src={propertyImg.src} className="w-full" alt="Property" />
       </figure>
@@ -16,6 +17,6 @@ export default function PropertyCard() {
           <p>0.14 HBAR</p>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
