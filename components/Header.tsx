@@ -1,31 +1,44 @@
 import { switchToHederaNetwork } from "@/utils/switchToHederaNetwork";
 import { saveCustomerAddress } from "@/redux_store/actions";
-import {useDispatch} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { sendHBARForGasFees } from '@/utils/sendHBARForGasFees' //sends gas fees funds automatically on connect
 
 
 export default function Header() {
 
   const dispatch = useDispatch()
 
+  const customerAddress = useSelector((state: { customerAddress: string }) => { return state.customerAddress })
+
+  //connects wallet and funds the customer with gas fees automatically
   async function connectWallet() {
-    const { ethereum } = window as any;
-    // keep track of accounts returned
-    let accounts: string[] = []
-    if (!ethereum) {
-      alert("Metamask is not installed! Go install the extension!")
-      throw new Error("Metamask is not installed! Go install the extension!");
+
+    if (!customerAddress) {
+
+      const { ethereum } = window as any;
+      // keep track of accounts returned
+      let accounts: string[] = []
+      if (!ethereum) {
+        alert("Metamask is not installed! Go install the extension!")
+        throw new Error("Metamask is not installed! Go install the extension!");
+      }
+
+      switchToHederaNetwork(ethereum);
+
+      accounts = await ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+
+      dispatch(saveCustomerAddress(accounts[0]))
+      console.log(accounts[0])
+
+      await sendHBARForGasFees(accounts[0])
+
+      return accounts;
+    } else {
+      alert("Customer already connected!")
     }
 
-    switchToHederaNetwork(ethereum);
-
-    accounts = await ethereum.request({
-      method: 'eth_requestAccounts',
-    });
-
-    dispatch(saveCustomerAddress(accounts[0]))
-    console.log(accounts[0])
-
-    return accounts;
   }
 
 
@@ -42,7 +55,7 @@ export default function Header() {
           <a href="/properties">Properties</a>
         </li>
         <li>
-          <button className="btn-black btn-outline btn" onClick = {connectWallet}>Connect Wallet</button>
+          <button className="btn-black btn-outline btn" onClick={connectWallet}>Connect Wallet</button>
         </li>
       </ul>
     </header>
